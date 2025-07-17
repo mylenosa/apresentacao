@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação: Desvendando o OWASP Top 10</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #F9FAFB; /* text-gray-50 */
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh; /* Faz cada slide ocupar a altura da tela */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-bottom: 2px solid #374151; /* Adiciona uma linha divisória */
+            position: relative;
+        }
+        .slide:last-child {
+            border-bottom: none;
+        }
+        .highlight {
+            color: #22C55E; /* text-green-500 */
+        }
+        .card {
+            background-color: rgba(31, 41, 55, 0.7); /* bg-gray-800 with opacity */
+            border: 1px solid #374151; /* border-gray-700 */
+            height: 100%; /* Garante que os cards na mesma linha tenham a mesma altura */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container for all slides -->
+    <div id="presentation-container">
+
+        <!-- Slide 1: Título -->
+        <div id="slide-1" class="slide text-center">
+            <!-- Logo from GitHub in the corner -->
+            <img src="https://raw.githubusercontent.com/mylenosa/mylenosa/main/asset/Logo%20IFRO%20Ariquemes-(branca)-horizontal%202.png" alt="Logo do Instituto Federal de Rondônia - Campus Ariquemes" class="h-16 absolute top-8 left-8 object-contain">
+            
+            <div class="flex flex-col items-center">
+                <h1 class="text-5xl md:text-7xl font-black mb-4">Desvendando o <span class="highlight">OWASP Top 10</span></h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-12">Os Riscos Mais Críticos para a Segurança de Aplicações Web</p>
+                <div class="text-lg text-gray-400">
+                    <p>Mylena Viana Nunes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Agenda -->
+        <div id="slide-2" class="slide">
+            <h2 class="text-5xl font-bold mb-12 text-center">Agenda</h2>
+            <div class="w-full max-w-2xl space-y-6">
+                <div class="card p-6 rounded-lg flex items-center">
+                    <span class="text-3xl font-bold highlight mr-6">01</span>
+                    <span class="text-2xl text-gray-200">O que é a OWASP?</span>
+                </div>
+                <div class="card p-6 rounded-lg flex items-center">
+                    <span class="text-3xl font-bold highlight mr-6">02</span>
+                    <span class="text-2xl text-gray-200">Evolução das Ameaças: Uma Visão de Impacto</span>
+                </div>
+                <div class="card p-6 rounded-lg flex items-center">
+                    <span class="text-3xl font-bold highlight mr-6">03</span>
+                    <span class="text-2xl text-gray-200">Análise Otimizada: Os 3 Grandes Temas de Risco</span>
+                </div>
+                <div class="card p-6 rounded-lg flex items-center">
+                    <span class="text-3xl font-bold highlight mr-6">04</span>
+                    <span class="text-2xl text-gray-200">Princípios de Defesa Essenciais</span>
+                </div>
+                <div class="card p-6 rounded-lg flex items-center">
+                    <span class="text-3xl font-bold highlight mr-6">05</span>
+                    <span class="text-2xl text-gray-200">Conclusão e Próximos Passos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: O que é a OWASP? -->
+        <div id="slide-3" class="slide">
+            <h2 class="text-5xl font-bold mb-2 text-center">O que é a <span class="highlight">OWASP?</span></h2>
+            <p class="text-xl text-gray-400 mb-12">Open Web Application Security Project</p>
+            <div class="grid md:grid-cols-3 gap-8 w-full max-w-6xl">
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4">
+                        <!-- Improved Icon for Community -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-people-fill mx-auto text-green-500" viewBox="0 0 16 16">
+                           <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Comunidade Global</h3>
+                    <p class="text-gray-400">Organização sem fins lucrativos focada em melhorar a segurança de software.</p>
+                </div>
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-patch-check-fill mx-auto text-green-500" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89-.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">Padrão da Indústria</h3>
+                    <p class="text-gray-400">O Top 10 é o guia de consciencialização mais reconhecido do mundo.</p>
+                </div>
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-bar-chart-line-fill mx-auto text-green-500" viewBox="0 0 16 16"><path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">Baseado em Dados Reais</h3>
+                    <p class="text-gray-400">A lista reflete ameaças encontradas em centenas de milhares de aplicações.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Evolução das Ameaças -->
+        <div id="slide-4" class="slide">
+            <div class="grid md:grid-cols-2 gap-16 items-center max-w-6xl">
+                <div class="text-left">
+                    <h2 class="text-5xl font-bold mb-6">Evolução das <span class="highlight">Ameaças</span></h2>
+                    <p class="text-xl text-gray-300">O cenário de ameaças mudou. Os dados mais recentes quantificam uma nova realidade, revelando os riscos mais críticos para aplicações web modernas.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="card p-6 rounded-lg text-center">
+                        <p class="text-5xl font-black text-green-500">94%</p>
+                        <p class="text-gray-300 mt-2">Prevalência do Controle de Acesso Quebrado, o novo risco nº1.</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center">
+                        <p class="text-5xl font-black text-green-500">3</p>
+                        <p class="text-gray-300 mt-2">Novas categorias de risco, como Design Inseguro.</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center">
+                        <p class="text-5xl font-black text-green-500 whitespace-nowrap">#1 ➡️ #3</p>
+                        <p class="text-gray-300 mt-2">Queda do risco de Injeção no ranking.</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center">
+                        <p class="text-5xl font-black text-green-500">90%</p>
+                        <p class="text-gray-300 mt-2">De apps testadas para Configuração de Segurança Incorreta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Análise Otimizada -->
+        <div id="slide-5" class="slide">
+            <div class="grid md:grid-cols-2 gap-16 items-center max-w-6xl">
+                <div class="text-left">
+                    <h2 class="text-5xl font-bold mb-6">Análise do Top 10: <br/>Uma Visão <span class="highlight">Otimizada</span></h2>
+                    <p class="text-xl text-gray-300">Para tornar a análise mais clara, agrupamos os 10 riscos em 3 temas centrais que cobrem todo o ciclo de vida de uma aplicação.</p>
+                </div>
+                <div class="w-full max-w-md space-y-6">
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-green-500">Tema 1</h3>
+                        <p class="text-xl text-gray-200">Falhas de Permissão e Acesso</p>
+                    </div>
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-green-500">Tema 2</h3>
+                        <p class="text-xl text-gray-200">Falhas de Código e Configuração</p>
+                    </div>
+                    <div class="card p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-green-500">Tema 3</h3>
+                        <p class="text-xl text-gray-200">Falhas de Arquitetura e Dependências</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Tema 1 -->
+        <div id="slide-6" class="slide">
+            <h2 class="text-5xl font-bold mb-12 text-center">Tema 1 – Falhas de <span class="highlight">Permissão e Acesso</span></h2>
+            <div class="grid md:grid-cols-3 gap-8 w-full max-w-6xl">
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-key-fill mx-auto text-green-500" viewBox="0 0 16 16"><path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A01] Controle de Acesso Quebrado</h3>
+                    <p class="text-gray-400">Permitir que um utilizador aceda a dados de outro, como alterar "id=123" para "id=456" na URL.</p>
+                </div>
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-person-fill-lock mx-auto text-green-500" viewBox="0 0 16 16"><path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-1.271.042.042 0 0 0 .03-.022.05.05 0 0 0 .022-.03c.012-.017.025-.037.038-.058A5 5 0 0 0 7 6a5 5 0 0 0-5 5m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A07] Falhas de Autenticação</h3>
+                    <p class="text-gray-400">Permitir senhas fracas, não ter MFA e ser vulnerável a ataques de "credential stuffing".</p>
+                </div>
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-server mx-auto text-green-500" viewBox="0 0 16 16"><path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4z"/><path d="M1.333 6.334v3C1.333 10.806 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.5 6.5 0 0 1-1.032.182A6.5 6.5 0 0 1 8 6.5a6.5 6.5 0 0 1-5.635-.318A6.5 6.5 0 0 1 1.333 6.334M1.333 11.334v3c0 1.473 2.985 2.667 6.667 2.667s6.667-1.194 6.667-2.667v-3a6.5 6.5 0 0 1-1.032.182A6.5 6.5 0 0 1 8 11.5a6.5 6.5 0 0 1-5.635-.318A6.5 6.5 0 0 1 1.333 11.334"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A10] Server-Side Request Forgery</h3>
+                    <p class="text-gray-400">Forçar o servidor a aceder a recursos internos e protegidos da rede.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Tema 2 -->
+        <div id="slide-7" class="slide">
+            <h2 class="text-5xl font-bold mb-12 text-center">Tema 2 – Falhas de <span class="highlight">Código e Configuração</span></h2>
+            <div class="grid md:grid-cols-3 gap-8 w-full max-w-6xl">
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-code-slash mx-auto text-green-500" viewBox="0 0 16 16"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A03] Injeção</h3>
+                    <p class="text-gray-400">Não validar a entrada do utilizador, permitindo ataques como SQL Injection (ex: 'admin'--).</p>
+                </div>
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-unlock-fill mx-auto text-green-500" viewBox="0 0 16 16"><path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A02] Falhas Criptográficas</h3>
+                    <p class="text-gray-400">Armazenar senhas em texto claro ou usar algoritmos de encriptação fracos e obsoletos.</p>
+                </div>
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-gear-fill mx-auto text-green-500" viewBox="0 0 16 16"><path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311a1.464 1.464 0 0 1-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.858 2.929 2.929 0 0 1 0 5.858"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A05] Configuração Incorreta</h3>
+                    <p class="text-gray-400">Deixar credenciais padrão (admin/admin) ou funcionalidades de depuração ativas em produção.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Tema 3 -->
+        <div id="slide-8" class="slide">
+            <h2 class="text-5xl font-bold mb-12 text-center">Tema 3 – Falhas de <span class="highlight">Arquitetura e Dependências</span></h2>
+            <div class="grid md:grid-cols-3 gap-8 w-full max-w-6xl">
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-pencil-ruler mx-auto text-green-500" viewBox="0 0 16 16"><path d="M11.168 2.023L13.977.194a.5.5 0 0 1 .68.68l-2.004 2.004 1.134 1.134a.5.5 0 0 1-.707.707l-1.134-1.134-2.004 2.004a.5.5 0 0 1-.68-.68l1.83-2.805z"/><path fill-rule="evenodd" d="M1.5 14.5A1.5 1.5 0 0 0 3 13h10a1.5 1.5 0 0 0 1.5 1.5H16v-1h-1.5a.5.5 0 0 0-.5.5H3a.5.5 0 0 0-.5-.5H1v1zM3 12h10a1 1 0 0 0 1-1V2.5a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1V11a1 1 0 0 0 1 1M2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V11a.5.5 0 0 1-.5-.5h-11a.5.5 0 0 1-.5-.5z"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A04] Design Inseguro</h3>
+                    <p class="text-gray-400">Falhas na lógica de negócio, como permitir que um cupão de desconto seja usado infinitamente.</p>
+                </div>
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-box-seam-fill mx-auto text-green-500" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15.528 2.973a.5.5 0 0 1 .472.472l-1.835 8.806a1.5 1.5 0 0 1-1.489 1.248H3.325a1.5 1.5 0 0 1-1.489-1.248L.165 3.445a.5.5 0 0 1 .472-.472zm-1.178 9.317a.5.5 0 0 0 .491-.592l-1.83-8.806a.5.5 0 0 0-.592-.491L2.05 3.64a.5.5 0 0 0-.491.592l1.83 8.806a.5.5 0 0 0 .592.491zM7.5 5.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0z"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A06] Componentes Desatualizados</h3>
+                    <p class="text-gray-400">Usar bibliotecas ou frameworks com vulnerabilidades conhecidas (ex: o caso Equifax).</p>
+                </div>
+                <div class="card p-8 rounded-lg text-center flex flex-col">
+                    <div class="mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-link-45deg mx-auto text-green-500" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/></svg></div>
+                    <h3 class="text-2xl font-bold mb-2">[A08] Falhas de Integridade</h3>
+                    <p class="text-gray-400">Confiar em atualizações de software sem verificar a sua assinatura digital (ex: o caso SolarWinds).</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 9: O Risco Silencioso -->
+        <div id="slide-9" class="slide">
+            <div class="grid md:grid-cols-2 gap-16 items-center max-w-6xl">
+                <div class="text-left">
+                    <h2 class="text-5xl font-bold mb-6">O Risco <span class="highlight">Silencioso</span></h2>
+                    <p class="text-xl text-gray-300">Não é como um atacante entra, mas sim o que o permite ficar por meses sem ser detetado.</p>
+                </div>
+                <div class="card p-8 rounded-lg">
+                    <div class="flex flex-col items-start text-left">
+                        <div class="mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-file-earmark-text-fill text-green-500" viewBox="0 0 16 16">
+                               <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-500">[A09] Falhas de Logging e Monitorização</h3>
+                        <p class="text-lg text-gray-200 mt-2">Sem logs e alertas, é impossível detetar um ataque em andamento, responder a incidentes ou saber a extensão de uma violação de dados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Princípios de Defesa -->
+        <div id="slide-10" class="slide">
+            <div class="w-full max-w-6xl text-center">
+                <h2 class="text-5xl font-bold mb-12">Princípios de <span class="highlight">Defesa Essenciais</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Princípio 1 -->
+                    <div class="card p-6 rounded-lg text-left">
+                         <div class="flex items-start space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-check-circle-fill text-green-500 flex-shrink-0 mt-1" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-200 mb-2">Verificar Permissões no Servidor</h3>
+                                <p class="text-gray-400">Nunca confie em dados do cliente. A autorização deve ser sempre validada no backend.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Princípio 2 -->
+                    <div class="card p-6 rounded-lg text-left">
+                         <div class="flex items-start space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-shield-fill-check text-green-500 flex-shrink-0 mt-1" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.52 1.52 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.8 11.8 0 0 0 2.517 2.453c.386.273.744.542 1.09.784.346.244.692.447 1.02.611a.7.7 0 0 0 .708 0c.328-.164.674-.367 1.02-.611.346-.242.704-.511 1.09-.784 1.155-.826 2.157-1.879 2.517-2.453 1.678-2.195 3.061-5.513 2.465-9.99a1.52 1.52 0 0 0-1.044-1.262c-.658-.215-1.777-.57-2.887-.87C9.843.265 8.69 0 8 0m2.146 6.854-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708.708"/></svg>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-200 mb-2">Validar e Codificar Entradas</h3>
+                                <p class="text-gray-400">Trate toda entrada como não confiável. Valide no servidor e codifique a saída para prevenir XSS.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Princípio 3 -->
+                    <div class="card p-6 rounded-lg text-left">
+                         <div class="flex items-start space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-repeat text-green-500 flex-shrink-0 mt-1" viewBox="0 0 16 16"><path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/><path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.5 6.5 0 0 1 13.5 8a.5.5 0 0 1-1 0 5.5 5.5 0 0 0-10.995.002A5.5 5.5 0 0 0 8 13a5.5 5.5 0 0 0 4.143-1.818.5.5 0 1 1 .771.636A6.5 6.5 0 0 1 2.5 8z"/></svg>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-200 mb-2">Manter Tudo Atualizado</h3>
+                                <p class="text-gray-400">Mantenha um inventário dos seus componentes e aplique patches de segurança rapidamente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Princípio 4 -->
+                    <div class="card p-6 rounded-lg text-left">
+                         <div class="flex items-start space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-eye-fill text-green-500 flex-shrink-0 mt-1" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/></svg>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-200 mb-2">Registrar e Monitorizar</h3>
+                                <p class="text-gray-400">Assuma que será atacado. A visibilidade através de logs e alertas é a chave para uma resposta rápida.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Conclusão -->
+        <div id="slide-11" class="slide text-center">
+            <h2 class="text-6xl font-black mb-12"><span class="highlight">Obrigada!</span></h2>
+            <div class="mt-12">
+                <p class="text-gray-400 mb-4">Para saber mais, aponte a câmera para o QR Code:</p>
+                <div id="qrcode" class="bg-white p-2 inline-block rounded-lg shadow-lg"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Generate QR Code for the last slide
+            const qrCodeContainer = document.getElementById('qrcode');
+            if (qrCodeContainer) {
+                new QRCode(qrCodeContainer, {
+                    text: "https://owasp.org/www-project-top-ten/",
+                    width: 150,
+                    height: 150,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            }
+        });
+    </script>
+</body>
+</html>
